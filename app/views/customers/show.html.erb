@@ -1,0 +1,21 @@
+<h1>プロフィール</h1>
+
+<%= link_to "プロフィール編集", edit_customer_path(@customer) %></br>
+<%#= link_to "カレンダー入力", calendar_path(@calendar.id) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <td>
+        <% @customer.images.each do |image|%>
+          <%= image_tag image, size: 10*10 %>
+        <% end %>
+      </td>
+    </tr>
+    <tr><th>ニックネーム</th>   <td><%= @customer.nickname %></td></tr>
+    <tr><th>性別</th>           <td><%= @customer.sex %></td></tr>
+    <tr><th>職業</th>           <td><%= @customer.professtion %></td></tr>
+    <tr><th>説明文</th>         <td><%= @customer.introduction %></td></tr>
+  </thead>
+</table>

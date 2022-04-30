@@ -1,0 +1,22 @@
+<h1>ペット画像編集</h1>
+
+<% if @pet.images.attached? %>
+  <% @pet.images.each do |image| %>
+    <%= image_tag image, size: 10*10 %> <br>
+  <% end %>
+<% end %>
+<%= link_to "削除", pet_path(@pet.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+
+<%= form_with model: @pet, local: true do |f| %>
+  ペットの画像  <%= f.file_field :images, multiple: true %></br>
+  ペットの名前  <%= f.text_field :name %></br>
+  ペットの年齢  <%= f.text_field :age %></br>
+  ペットの性別  <%= f.text_field :sex %></br>
+  ペットの毛色  <%= f.text_field :color %></br>
+  ペットの種類  <%= f.text_field :kind %></br>
+  ペットの説明  <%= f.text_field :introduction %></br>
+  <%= f.submit "保存する" %>
+<% end %>
+
+
+

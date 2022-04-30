@@ -1,0 +1,14 @@
+<div><h>トップページ</h></div>
+
+<% @sitters.each do |sitter| %>
+<%= link_to "詳細ページへ", sitter_show_for_customer_path(sitter.id) %></br>
+
+  <% sitter.images.each do |image|%>
+          <%= image_tag image, size: 10*10 %></br>
+  <% end %>
+  <%= sitter.nickname %><br>
+  <%= sitter.age %><br>
+  <%= sitter.sex %><br>
+
+<% end %>
+

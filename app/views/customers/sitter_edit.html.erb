@@ -1,0 +1,10 @@
+<h1>シッター情報編集</h1>
+
+<%= form_with model: @customer, scope: :customer, url: update_sitter_customer_patch_path(@sitter.id), method: :patch, local: true do |f| %>
+  氏名        <%= f.text_field :last_name %><%= f.text_field :first_name %></br>
+  年齢　      <%= f.text_field :age %></br>
+  電話番号    <%= f.telephone_field :telephone_number %></br>
+  郵便番号    <%= f.text_field :postal_code %></br>
+  住所        <%= f.text_field :address %></br>
+              <%= f.submit '登録する' %>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>シッター詳細（公開）</h1>
+
+<%= @sitter.nickname %>
+
+<%= link_to "シッターに問い合わせる", chat_rooms_path(sitter_id: @sitter.id, user_id: current_customer.id), method: :post %>
+
+<!--link_toでcraetアクションに飛ぶ。そのときにsitter_idとuser_idの情報を送った。※sitter_idとuser_idのidが同じ場合はcraetできないようにしたい-->
+
+

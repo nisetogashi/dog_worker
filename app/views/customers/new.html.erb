@@ -1,0 +1,4 @@
+<%= form_with model: @customer, url: customer_image_path(@customer), local: true  do |form| %>
+  <%= form.file_field :images %><br>
+  <%= form.submit %>
+<% end %>

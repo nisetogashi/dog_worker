@@ -1,0 +1,15 @@
+<h1>ペット詳細</h1>
+
+<% if @pet.images.attached? %>
+  <% @pet.images.each do |image| %>
+    <%= image_tag image, size: 10*10 %><br>
+  <% end %>
+<% end %>
+<%= @pet.name %>
+<%= @pet.age %>
+<%= @pet.sex %>
+<%= @pet.color %>
+<%= @pet.kind %>
+<%= @pet.introduction %>
+
+<%= link_to "編集", edit_pet_path(@pet.id) %>

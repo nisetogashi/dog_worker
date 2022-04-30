@@ -1,0 +1,20 @@
+<h1>あなたのペット</h1>
+
+<%= link_to "ペット画像登録", new_pet_path %></br>
+
+
+<% @pets.each do |pet| %>
+
+  <%=link_to pet_path(pet.id) do %>
+
+    <% if pet.images.attached? %>
+      <% pet.images.each do |image| %>
+        <%= image_tag image, size: 10*10 %><br>
+        クリックで詳細画面へ
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
