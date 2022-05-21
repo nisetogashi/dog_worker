@@ -1,4 +1,7 @@
 class CustomersController < ApplicationController
+
+  before_action :move_to_signed_in, except: [:index]
+
   def index
   end
 
@@ -12,18 +15,6 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
-  end
-
-  def sitter_show
-    @sitter = Customer.find(params[:id])
-  end
-
-  def sitter_edit
-    @sitter = Customer.find(params[:id])
-  end
-
-  def sitter_show_for_customer
-    @sitter = Customer.find(params[:id])
   end
 
   def update_image #customerモデルのcreateアクションがdeviseで既に使われているため、アクション名をupdete_imageに変更した
@@ -55,6 +46,12 @@ class CustomersController < ApplicationController
   end
 
   def review
+  end
+
+  def move_to_signed_in
+    unless customer_signed_in?
+      redirect_to new_customer_session_path
+    end
   end
 
   private

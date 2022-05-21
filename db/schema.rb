@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_20_122514) do
+ActiveRecord::Schema.define(version: 2022_05_10_154637) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,25 +33,19 @@ ActiveRecord::Schema.define(version: 2022_04_20_122514) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "bookings", force: :cascade do |t|
+  create_table "chats", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pets_id"
-    t.integer "sitter_id"
-    t.integer "user_id"
-    t.string "time"
-    t.string "day"
-    t.string "total_payment"
-    t.text "introduction"
-    t.boolean "is_status", default: true
   end
 
-  create_table "chat_rooms", force: :cascade do |t|
+  create_table "customer_rooms", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sitter_id"
-    t.integer "user_id"
-    t.text "introduction"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -84,14 +78,6 @@ ActiveRecord::Schema.define(version: 2022_04_20_122514) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "chat_room_id"
-    t.integer "customer_id"
-    t.text "intrduction"
-  end
-
   create_table "pets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -112,12 +98,28 @@ ActiveRecord::Schema.define(version: 2022_04_20_122514) do
     t.text "introduction"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.date "day", null: false
+    t.string "time", null: false
+    t.integer "customer_id", null: false
+    t.text "introduction"
+    t.boolean "is_status", default: true, null: false
+    t.datetime "start_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
     t.string "review"
     t.text "introduction"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

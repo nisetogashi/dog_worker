@@ -1,0 +1,18 @@
+
+<% @chats.each do |chat| %>
+  <% if chat.customer_id == current_customer.id %>
+        <%= chat.message %>
+  <% else %>
+    <%= chat.message %>
+  <% end %>
+<% end %>
+
+<%= form_with model: @chat do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit "送信" %>
+<% end %>
+
+<% if current_customer != @customer %>
+  <%= link_to 'Begin Chat', chat_path(@customer.id) %>
+<% end %>

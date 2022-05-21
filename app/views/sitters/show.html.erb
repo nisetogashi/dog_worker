@@ -1,0 +1,18 @@
+ <h1>シッター情報詳細</h1>
+
+
+ <%= @sitter.nickname %>
+ <%= link_to "シッターに問い合わせる", chat_path(current_customer.id) %>
+ <!--link_toでcraetアクションに飛ぶ。そのときにsitter_idとuser_idの情報を送った。※sitter_idとuser_idのidが同じ場合はcraetできないようにしたい-->
+
+ <%= link_to "予約に進む", customer_sitter_reservations_path(current_customer, @sitter.id) %>
+ <%#= link_to "予約に進む", booking_path(@booking.id) %>
+
+
+ <%= link_to "登録する", edit_customer_sitter_path(current_customer, @sitter.id) %>
+ <%= @sitter.last_name %></br>
+ <%= @sitter.first_name %></br>
+ <%= @sitter.telephone_number %></br>
+ <%= @sitter.postal_code %></br>
+ <%= @sitter.address %></br>
+
