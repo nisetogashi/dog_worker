@@ -10,10 +10,13 @@
   </head>
 
   <body>
+    <h1>DOG WORKER</h1>
+
     <% if customer_signed_in? %>
      <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
      <li><%= link_to "その他", customers_path %></li>
-     <li><%#= link_to "予約一覧", reservation_lists_path %></li>
+     <li><%= link_to "予約一覧", reservation_lists_path %></li>
+     <li><%= link_to "お気に入り一覧", customer_sitter_favorites_path(current_customer, current_customer.id) %></li>
      <li><%= link_to "ホーム", root_path %></li>
 
     <% else %>

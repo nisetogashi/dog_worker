@@ -73,9 +73,13 @@ ActiveRecord::Schema.define(version: 2022_05_10_154637) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "fovarites", force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "sitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_favorites_on_customer_id"
+    t.index ["sitter_id"], name: "index_favorites_on_sitter_id"
   end
 
   create_table "pets", force: :cascade do |t|

@@ -2,7 +2,8 @@ class ReservationsController < ApplicationController
   before_action :authenticate_customer!
 
   def list
-    @reservation_lists = Reservation.all
+    @customer_reservations = current_customer.reservations.where("day >= ?", Date.current).order(day: :desc)
+    @visit_historys = current_customer.reservations.where("day < ?", Date.current).where("day > ?", Date.today << 12).order(day: :desc)
   end
 
   def index

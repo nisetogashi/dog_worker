@@ -27,15 +27,9 @@ class CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(params[:id])
-    customer.update(customer_params)
-    redirect_to customer_path(customer)
-  end
-
-  def update_sitter
-    sitter = Customer.find(params[:id])
-    sitter.update(customer_params)
-    redirect_to sitter_customer_path(sitter)
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+    redirect_to customer_path(@customer)
   end
 
   def calendar

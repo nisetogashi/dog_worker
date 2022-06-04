@@ -1,4 +1,6 @@
+<h1>画像投稿</h1>
+
 <%= form_with model: @customer, url: customer_image_path(@customer), local: true  do |form| %>
   <%= form.file_field :images %><br>
-  <%= form.submit %>
+  <%= form.submit "登録する" %>
 <% end %>
