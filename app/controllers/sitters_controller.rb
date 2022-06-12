@@ -2,6 +2,7 @@ class SittersController < ApplicationController
 
   def show
     @sitter = Customer.find(params[:id])
+    @reviews = Review.where(sitter_id: @sitter.id)
   end
 
   def edit

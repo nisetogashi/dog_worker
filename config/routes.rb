@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   # post 'customers/sitter/:id' => 'customers#sitter_show', as: 'sitter_customer_post'
   # get 'customers/sitter/:id' => 'customers#sitter_show', as: 'sitter_customer'
   # get 'customers/sitter/:id/edit' => 'customers#sitter_edit', as: 'edit_sitter_customer'
+  resources :my_reservations, only: [:index, :update]
   resources :customers, only: [:new, :show, :index, :edit, :update] do
     resources :sitters do
        resources :favorites, only: [:create, :destroy, :index]
        resources :reservations
+       resources :reviews, only: [:new, :create, :destroy]
     end
   end
   get 'reservations' => 'reservations#list', as: 'reservation_lists'

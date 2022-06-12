@@ -106,8 +106,11 @@ ActiveRecord::Schema.define(version: 2022_05_10_154637) do
     t.date "day", null: false
     t.string "time", null: false
     t.integer "customer_id", null: false
+    t.integer "sitter_id", null: false
+    t.integer "pet_id"
     t.text "introduction"
     t.boolean "is_status", default: true, null: false
+    t.boolean "is_completed", default: false, null: false
     t.datetime "start_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -117,8 +120,10 @@ ActiveRecord::Schema.define(version: 2022_05_10_154637) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+    t.integer "sitter_id"
     t.string "review"
     t.text "introduction"
+    t.float "rate"
   end
 
   create_table "rooms", force: :cascade do |t|

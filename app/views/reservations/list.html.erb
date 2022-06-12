@@ -2,20 +2,36 @@
         <table class="table">
           <thead>
             <tr>
+              <th>CustomerId</th>
+              <th>SitterId</th>
               <th scope="col">予約日</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <% @customer_reservations.each do |customer_reservation| %>
-              <td>
-                <%= customer_reservation.day %>
-                <%= customer_reservation.time %>
-              </td>
-              <td>
-                <%= link_to '削除', reservation_lists_path(customer_reservation.id), method: :delete, data: { confirm: "削除してよろしいですか？", commit: "削除する", cancel: "やめる", title: "ご確認ください" } %>
-              </td>
-            </tr>
+              <tr>
+                <td><%= customer_reservation.customer_id %></td>
+                <td><%= customer_reservation.sitter_id %></td>
+                <td>
+                  <%= customer_reservation.day %>
+                  <%= customer_reservation.time %>
+                </td>
+                <td>
+                  <% if customer_reservation.is_completed %>  <%# 評価を持った予約は空ですよね？（日本語がいまいち）unless present?と意味は同じ %>
+                    <%= link_to "シッターを評価する", new_customer_sitter_review_path(customer_id: current_customer.id, sitter_id: customer_reservation.sitter_id) %>
+                  <% else %>
+                    <%= link_to "シッター詳細", customer_sitter_path(customer_id: current_customer.id, id: customer_reservation.id) %>
+                  <% end %>
+                  <%= link_to '削除', reservation_lists_path(customer_reservation.id), method: :delete, data: { confirm: "削除してよろしいですか？", commit: "削除する", cancel: "やめる", title: "ご確認ください" } %>
+                </td>
+                <td>
+                  <% if customer_reservation.sitter_id == current_customer.id %>
+                    FLG CHANGE
+                  <% end %>
+                </td>
+              </tr>
             <% end %>
             <% if @customer_reservations.blank? %>
               <tr>

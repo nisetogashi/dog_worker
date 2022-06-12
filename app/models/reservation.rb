@@ -1,5 +1,6 @@
 class Reservation < ApplicationRecord
   belongs_to :customer
+  has_many :reviews, dependent: :destroy
 
   validates :day, presence: true
   validates :time, presence: true

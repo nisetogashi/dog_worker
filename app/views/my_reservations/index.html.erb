@@ -1,0 +1,26 @@
+<h1>MyReservations</h1>
+
+<h2>Customer_id: <%= current_customer.id %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Time</th>
+      <th>Customer</th>
+      <th>Flag</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @my_reservations.each do |my_reservation| %>
+      <tr>
+        <td><%= my_reservation.day %></td>
+        <td><%= my_reservation.time %></td>
+        <td><%= my_reservation.customer_id %></td>
+        <td><%= my_reservation.is_completed ? 'COMPLETE' : 'NO COMPLETE' %></td>
+        <td><%= link_to 'CHANGE FLG', my_reservation_path(my_reservation.id), method: :patch %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -30,6 +30,7 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    @reservation.sitter_id = params[:sitter_id]
     if @reservation.save
       redirect_to customer_sitter_reservation_path(params[:customer_id], params[:sitter_id], @reservation)
     else

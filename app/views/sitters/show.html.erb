@@ -25,3 +25,22 @@
      <span>❤︎</spa>
    <% end %>
  <% end %>
+
+<h2>Sitter Reviews</h2>
+<% @reviews.each do |review| %>
+ <div>
+  <%= simple_format(review.introduction) %>
+ </div>
+ <div id="sitter-review_<%= review.id %>" data-rate="<%= review.rate %>"></div>
+ <script>
+  $('#sitter-review_<%= review.id %>').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-rate');
+    },
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+  });
+ </script>
+<% end %>
