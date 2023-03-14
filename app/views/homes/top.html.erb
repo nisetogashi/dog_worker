@@ -2,8 +2,12 @@
 
 <% @sitters.each do |sitter| %>
 
-    <% if customer_signed_in? %>
-      <%= link_to "詳細ページへ", customer_sitter_path(current_customer.id, sitter.id) %></br>
+    <% if customer_signed_in?%>
+      <% if  sitter.present? %>
+        <%= link_to "詳細ページへ", customer_sitter_path(current_customer.id, sitter.id) %></br>
+      <% else %>
+      <%# 何も表示させいない %>
+      <% end %>
     <% else %>
       <%= link_to "詳細ページへ", new_customer_session_path %></br>
     <% end %>

@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
   def top
-    @sitters = Customer.all
+    @sitters = current_customer&.sitters || []
   end
 end
