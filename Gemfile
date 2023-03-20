@@ -67,5 +67,5 @@ gem 'jquery-rails'
 
 gem 'dotenv-rails'
 group :production do
-  gem 'mysql3'
+  gem 'mysql2'
 end
