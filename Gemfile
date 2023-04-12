@@ -64,6 +64,7 @@ gem 'devise'
 gem "simple_calendar", "~> 2.0"
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
+gem 'psych', '~> 3.1' #追記
 
 gem 'dotenv-rails'
 group :production do
