@@ -68,6 +68,6 @@ gem 'psych', '~> 3.1' #追記
 gem "sass-rails", "~> 6" #追記
 
 gem 'dotenv-rails'
-group :production do
+ group :production do
   gem 'mysql2'
 end
