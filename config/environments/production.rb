@@ -93,4 +93,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 end
 
-  config.force_ssl = true #追記
+  #config.force_ssl = true #追記
