@@ -3,7 +3,10 @@
         "@tabSize": 2
     },
     "extensions": {
-        "@json.schemas": []
+        "@editor.acceptSuggestionOnEnter": "on",
+        "@editor.snippetSuggestions": "top",
+        "@editor.suggest.preview": true,
+        "@editor.suggest.showMethods": true
     },
     "general": {
         "@stripws": true
